@@ -67,7 +67,7 @@ class FristPermutation: #초기 순열 함수
             if len(new)==8:
                 fristPermutationList.append(new)
                 new=[]
-        return fristPermutationList
+        return fristPermutationList #[['000...','000..',....]]의 형태
 
     def fristPermutationGraph(): #초기순열표 생성
         even = [] #짝수

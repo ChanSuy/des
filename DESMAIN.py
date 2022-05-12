@@ -2,10 +2,14 @@
 import DES1
 import DES2
 import DES3
+import DES4
+import DES5
 
 fristPermutation = DES1.FristPermutation
 keySting=DES2.KeySting
 xor=DES3.Operating
+sBox=DES4.S_Box
+pBox=DES5.P_Box
 
 while True:
         plain = input("평문을 입력하세요 : ")
@@ -38,13 +42,24 @@ while True:
         fristPermutation.displayBit(keyPressPermutation2)
 
         print("[오른쪽 평문 32bit 확장 순열 결과]")
-        extendKey=fristPermutation.extendPermutation(fristPermutationResult)
-        fristPermutation.displayBit(extendKey)
+        extendPlain=fristPermutation.extendPermutation(fristPermutationResult)
+        fristPermutation.displayBit(extendPlain)
 
         print("[XOR연산 결과]")
-        xorResult=xor.operatingExclusive(extendKey,keyPressPermutation2)
+        xorResult=xor.operatingExclusive(extendPlain,keyPressPermutation2)
         fristPermutation.displayBit(xorResult)
 
+        print("[S-box 결과]")
+        sBoxResult=sBox.sBoxRepalce(sBox,xorResult)
+        fristPermutation.displayBit(sBoxResult)
+        
+        print("[P-box 결과]")
+        pBoxResult=pBox.pBoxReplace(sBoxResult)
+        fristPermutation.displayBit(pBoxResult)
+
+        print("[왼쪽 키 32bit와 P-box 32bit XOR결과]")
+        roundR32Bit=xor.operatingExclusive(fristPermutationResult,pBoxResult)
+        fristPermutation.displayBit(roundR32Bit)
         
         
 

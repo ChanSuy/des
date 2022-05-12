@@ -21,8 +21,8 @@ class Operating:
         
         result1="".join(result1[0]) #리스트로 구현된 48bit평문과 48bit 라운드 키를 비트열로 변환하는 알고리즘
         result2="".join(result2[0])
-        
-        for i in range(len(result1)): #result1의 길이 만큼 i값을 인덱싱하여 둘다 값이 같으면 0 다르면 1
+        print(result1,result2)
+        for i in range(32): #32bit 길이 만큼 i값을 인덱싱하여 둘다 값이 같으면 0 다르면 1
             if result1[i]==result2[i]:
                 xorValue+='0'
             else:
