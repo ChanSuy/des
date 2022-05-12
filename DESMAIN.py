@@ -30,14 +30,14 @@ while True:
         fristPermutation.displayBit(keyPressPermutation1) #압축 순열 결과를 표현하는 메소드에 파라미터로 압축순열 결과 전달
 
         print("[시프트 결과]")
-        keyShift=keySting.keyShift(3,keyPressPermutation1) #현재 1 라운드 이지만 라운드 함수를 만들어 전역변수 round를 라운드마다 카운트 할 것
+        keyShift=keySting.keyShift(1,keyPressPermutation1) #현재 1 라운드 이지만 라운드 함수를 만들어 전역변수 round를 라운드마다 카운트 할 것
         fristPermutation.displayBit(keyShift) #키 시프트 결과 출력
 
         print("[압축순열2 결과]")
         keyPressPermutation2=keySting.keyPressPermutation2(keyShift)
         fristPermutation.displayBit(keyPressPermutation2)
 
-        print("[오른쪽 평문 32bit 확장 순열 결과]]")
+        print("[오른쪽 평문 32bit 확장 순열 결과]")
         extendKey=fristPermutation.extendPermutation(fristPermutationResult)
         fristPermutation.displayBit(extendKey)
 
