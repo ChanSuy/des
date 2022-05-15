@@ -7,7 +7,7 @@ class Operating:
         for i in bitString:
             bit+=i
             if len(bit)==8:
-                emptyList.append(bit)
+                emptyList.append(bit) 
                 bit=''
         result.append(emptyList)
         return result
