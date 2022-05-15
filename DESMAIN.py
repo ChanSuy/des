@@ -62,4 +62,5 @@ while True:
         fristPermutation.displayBit(roundR32Bit)
         
         
+        
 
