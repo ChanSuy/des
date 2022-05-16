@@ -56,34 +56,34 @@ class S_Box:
         ]
         return sbox
 
-    def sBoxRepalce(self,xorResult):
+    def sBoxRepalce(self,xorResult): #sbox 대치를 이용하여 평문48bit과 키48bit xor결과를 32bit으로
         sbox=self.sBoxGraph()
         xorResultBit=''
         empty6Bit=''
         count=int(0)
         sboxRsult=[]
         
-
-        for i in range(len(xorResult)):
+        for i in range(len(xorResult)): #평문 왼쪽 32bit와 pbox결과와 xor한 결과를 문자열로 저장
             for j in range(len(xorResult[i])):
                 xorResultBit+=xorResult[i][j]
-        emptyBit=xorResultBit
+        emptyBit=xorResultBit #첫번째 xor 결과 비트열로 저장
 
-        for i in range(len(sbox)):
-            empty6Bit=emptyBit[:6]
-            emptyBit=emptyBit[6:]
-            idx1=0
+        for i in range(len(sbox)): #실제 sbox처리
+            empty6Bit=emptyBit[:6] #앞자리 6비트 따로 저장
+            emptyBit=emptyBit[6:] #xor결과 6개씩 짤라서 저장
+            idx1=0 #sbox를 저장하는 3차원 리스트를 참조할 인덱스값을 저장할 변수
             idx2=0
-            for a in empty6Bit[-1:-5:-1]:
-                if a=='1':
+            for a in empty6Bit[-1:-5:-1]: #6비트씩 자른 결과 뒤에서 4비트 읽기
+                if a=='1': #뒤부터 읽은 비트가 1이이면 2의 (자릿수-1)제곱해서 count에 저장
                     idx1+=int(a)*(2**count)
                 count+=1
             count=0
-            for b in empty6Bit[1::-1]:
-                if b=='1':
+            for b in empty6Bit[1::-1]: #6비트씩 자른 결과 뒤에서 2비트 읽기
+                if b=='1': #뒤부터 읽은 비트가 1이이면 2의 (자릿수-1)제곱해서 count에 저장
                     idx2+=int(b)*(2**count)
                 count+=1
             count=0
             sboxRsult.append('0'*(4-len(bin(sbox[i][idx2][idx1])[2:]))+bin(sbox[i][idx2][idx1])[2:])
-        return [sboxRsult]
+            #i번째 sbox의 dix2,dix1에 있는 값을 2진수로 바꾼뒤 앞자리 0으로 채워 4비로 만들어서 리스트에 저장
+        return [sboxRsult] #2차원 리스트로 출력
             

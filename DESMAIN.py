@@ -61,6 +61,3 @@ while True:
         roundR32Bit=xor.operatingExclusive(fristPermutationResult,pBoxResult)
         fristPermutation.displayBit(roundR32Bit)
         
-        
-        
-

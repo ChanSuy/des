@@ -115,4 +115,4 @@ class FristPermutation: #초기 순열 함수
                 emptyList.append(bit)
                 bit=''
         extendPermutationResult.append(emptyList)
-        return extendPermutationResult #확장 순열 결과 2차원 리스트로 출력
+        return extendPermutationResult #확장 순열 결과 2차원 리스트로 출력 [['0000...','0000...',....]]
