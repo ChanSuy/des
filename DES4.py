@@ -57,11 +57,11 @@ class S_Box:
         return sbox
 
     def sBoxRepalce(self,xorResult): #sbox 대치를 이용하여 평문48bit과 키48bit xor결과를 32bit으로
-        sbox=self.sBoxGraph()
-        xorResultBit=''
-        empty6Bit=''
-        count=int(0)
-        sboxRsult=[]
+        sbox=self.sBoxGraph() #S-box 대치 표를 불러옴
+        xorResultBit='' #xor연산 결과를 담는 빈 문자열
+        empty6Bit='' #6비트 씩 끊을 빈 문자열
+        count=int(0) # 인덱스에 넣을 값
+        sboxRsult=[] #sbox 대치 결과를 넣은 빈 리스트
         
         for i in range(len(xorResult)): #평문 왼쪽 32bit와 pbox결과와 xor한 결과를 문자열로 저장
             for j in range(len(xorResult[i])):
