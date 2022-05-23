@@ -11,28 +11,6 @@
 # 3) 순열에 대응할 때 순열 값 다 0이라고 생각하고 and연산한 뒤 결과를 해당 인덱스에 저장하기
 class FristPermutation: #초기 순열 함수
 
-    def display32Bit(binPlain): #비트열 리스트(2차원)를 받아 출력하는 함수
-        bit=''
-        new = []
-        displaybit=[]
-        for i in range(len(binPlain)):
-            for j in range(len(binPlain[i])):
-                bit+=binPlain[i][j]
-                if len(bit)==8:
-                    new.append(bit)
-                    bit=''
-                    if len(new)==4:
-                        displaybit.append(new)
-                        new=[]
-        return displaybit
-
-    def displayBit(binPlain): #비트열 리스트를 받아 출력하는 함수
-        for i in range(len(binPlain)):
-            print('>>>',end='')
-            for j in range(len(binPlain[i])):
-                print(binPlain[i][j],end=' ')
-            print()
-
     def changeBit(string): #문자열 평문을 비트열로 표현하는 함수
         binPlain=[] #문자하나씩 리스트로 저장하는 2차원리스트
         new=[] #일시적으로 한문자를 비트열로 저장하여 사용할 빈 리스트
@@ -43,7 +21,8 @@ class FristPermutation: #초기 순열 함수
             if len(new)==8:
                 binPlain.append(new)
                 new=[]
-        return binPlain
+        
+        return binPlain #[['00...','00...'...]]
 
     def fristPermutationMapping(self,binPlain): #초기순열 표를 가져와서 매핑하는 함수 인자값 binPlain
         fristPermutation=self.fristPermutationGraph()
@@ -64,9 +43,10 @@ class FristPermutation: #초기 순열 함수
             if len(bit)==8:
                 new.append(bit)
                 bit=''
-            if len(new)==8:
+            if len(new)==4:
                 fristPermutationList.append(new)
                 new=[]
+        print(fristPermutationList)
         return fristPermutationList #[['000...','000..',....]]의 형태 
 
     def fristPermutationGraph(): #초기순열표 생성
@@ -105,9 +85,10 @@ class FristPermutation: #초기 순열 함수
             for j in range(6):
                 value=(31+4*i+j)%32 #인덱스라 생각하고 표에 -1씩 한 뒤 식 적용시 맞음
                 extendPermutationGraph.append(value)
-        fristRightPermutation="".join(fristPermutationResult[0])
+
+        fristRightPermutation="".join(fristPermutationResult[1])
         for i in extendPermutationGraph: #확장 순열 인덱싱하여 비트열 재배치
-            emptyStr+=fristRightPermutation[32:][i]
+            emptyStr+=fristRightPermutation[:][i]
 
         for i in emptyStr: #재배치한 비트열 2차원 리스트로 적용(display 메소드 사용하기 위함)
             bit+=i

@@ -45,7 +45,7 @@ class KeySting:
             for j in range(len(pressKeyList[i])):
                 roundKey+=pressKeyList[i][j] #2차원 리스트 문자열로
 
-        if 1<=round<=2 or round==9 or round==16: #해당 라운드마다 1시프트
+        if 0<=round<=1 or round==8 or round==15: #해당 라운드마다 1시프트
             lkey="".join(roundKey[1:28]+roundKey[0])
             rkey="".join(roundKey[29:]+roundKey[28])
         else: #해당 라운드에 2시프트

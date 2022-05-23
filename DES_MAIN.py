@@ -1,15 +1,15 @@
 
-import DES1
-import DES2
-import DES3
-import DES4
-import DES5
+import Fstpermutation
+import ProduceKey
+import OperatingF
+import SBOX
+import PBOX
 
-fristPermutation = DES1.FristPermutation
-keySting=DES2.KeySting
-xor=DES3.Operating
-sBox=DES4.S_Box
-pBox=DES5.P_Box
+fristPermutation = Fstpermutation.FristPermutation
+keySting=ProduceKey.KeySting
+xor=OperatingF.Operating
+sBox=SBOX.S_Box
+pBox=PBOX.P_Box
 
 while True:
         plain = input("평문을 입력하세요 : ")
