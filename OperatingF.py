@@ -87,3 +87,12 @@ class Operating:
                 finalListResult.append(bit)
                 bit=''
         return [finalListResult]
+
+    def changeChr(finalRoundResult):
+        for i in finalRoundResult[0]:
+            for j in i[-1::-1]:
+                if j==1:
+                    chnum=
+                
+                
+                
